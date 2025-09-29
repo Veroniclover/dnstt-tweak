@@ -1,10 +1,26 @@
 #!/bin/bash
 
 arch=$(uname -m)
+bin="$PREFIX/bin/dnstt-tweak"
 
-if [[ "$arch" == "aarch64" ]]; then
-    curl -sL "https://github.com/Veroniclover/dnstt-tweak/releases/download/v0.0.1/dnstt-arm64" -o "$PREFIX/bin/dnstt-tweak"
-    chmod +x "$PREFIX/bin/dnstt-tweak"
-else
-    echo "not supported, contact owner for support"
-fi
+case "$arch" in
+    aarch64|armv81)
+        url="https://github.com/Veroniclover/dnstt-tweak/releases/download/v0.0.1/dnstt-arm64"
+        ;;
+    armv7l)
+        url="https://github.com/Veroniclover/dnstt-tweak/releases/download/v0.0.1/dnstt-armv7"
+        ;;
+    i686)
+        url="https://github.com/Veroniclover/dnstt-tweak/releases/download/v0.0.1/dnstt-x86"
+        ;;
+    x86_64)
+        url="https://github.com/Veroniclover/dnstt-tweak/releases/download/v0.0.1/dnstt-x86_64"
+        ;;
+    *)
+        echo "Architecture $arch not supported, contact owner for support"
+        exit 1
+        ;;
+esac
+
+curl -sL "$url" -o "$bin"
+chmod +x "$bin"
