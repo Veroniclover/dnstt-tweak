@@ -4,7 +4,7 @@ arch=$(uname -m)
 bin="$PREFIX/bin/dnstt-tweak"
 
 case "$arch" in
-    aarch64|armv7l|armv8l)
+    aarch64|armv8l)
         url="https://github.com/Veroniclover/dnstt-tweak/releases/download/v0.0.1/dnstt-arm64"
         ;;
     armv7l)
