@@ -24,3 +24,4 @@ esac
 
 curl -sL "$url" -o "$bin"
 chmod +x "$bin"
+echo "Installation Successful, you can proceed to the second command"
